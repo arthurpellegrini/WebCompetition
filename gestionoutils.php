@@ -10,6 +10,7 @@ function genererpdf()
 {
 
 }
+
 function get_prof($prof_id)
 {
     $connexion = connectionDB();
@@ -18,7 +19,7 @@ function get_prof($prof_id)
 
     $data = mysqli_fetch_row($result);
     mysqli_close($connexion);
-    if($data){
+    if ($data) {
         return $data[0];
     }
     return null;
@@ -46,7 +47,22 @@ function get_reservation_prof($prof_id)
 
 
     $data = mysqli_fetch_row($result);
-    if($data){
+    if ($data) {
+        return array($data[0], $data[1]);
+    }
+    mysqli_close($connexion);
+    return null;
+}
+
+function get_reservation_elem($elem_id)
+{
+    $connexion = connectionDB();
+    $req = "SELECT LIBELLE, IDENTIFIANT FROM elements WHERE IDENTIFIANT=$elem_id AND RESERVE_PAR IS NOT NULL";
+    $result = mysqli_query($connexion, $req);
+
+
+    $data = mysqli_fetch_row($result);
+    if ($data) {
         return array($data[0], $data[1]);
     }
     mysqli_close($connexion);
@@ -56,14 +72,14 @@ function get_reservation_prof($prof_id)
 function faire_reservation($prof_id, $elem_id): bool
 {
 //todo faire reservation et verifier si
-    if (get_reservation_prof($prof_id) !== null && get_element($elem_id) !== null && get_prof($prof_id) != null)
-    {
+    var_dump(get_reservation_elem($elem_id));
+    if (get_reservation_prof($prof_id) == null && get_element($elem_id) !== null && get_prof($prof_id) != null && get_reservation_elem($elem_id) == null) {
         echo "ouiiiiii";
         $connexion = connectionDB();
-        $sql="UPDATE elements SET RESERVE_PAR=? WHERE IDENTIFIANT=?";
+        $sql = "UPDATE elements SET RESERVE_PAR=? WHERE IDENTIFIANT=?";
 
-        $stmt= $connexion->prepare($sql);
-        $stmt->bind_param("ii",$prof_id , $elem_id);
+        $stmt = $connexion->prepare($sql);
+        $stmt->bind_param("ii", $prof_id, $elem_id);
         $stmt->execute();
         mysqli_close($connexion);
         return true;

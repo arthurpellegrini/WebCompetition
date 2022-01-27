@@ -88,7 +88,6 @@ function DisplayProfessorList($professorList)
 <body>
 <?php DisplayReservationTable(GetData());
 DisplayProfessorList($professorList);
-echo(faire_reservation(5,10));
 ?>
 </body>
 </html>
