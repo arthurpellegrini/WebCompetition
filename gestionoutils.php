@@ -32,7 +32,7 @@ function get_element($elem_id): array
     $result = mysqli_query($connexion, $req);
 
     $array = array();
-    while ($data = mysqli_fetch_row($result)) {
+    if ($data = mysqli_fetch_row($result)) {
         $array[] = array($data[0], $data[1]);
     }
     mysqli_close($connexion);
@@ -57,13 +57,13 @@ function get_reservation_prof($prof_id)
 function get_reservation_elem($elem_id)
 {
     $connexion = connectionDB();
-    $req = "SELECT LIBELLE, IDENTIFIANT FROM elements WHERE IDENTIFIANT=$elem_id AND RESERVE_PAR IS NOT NULL";
+    $req = "SELECT LIBELLE, IDENTIFIANT,RESERVE_PAR FROM elements WHERE IDENTIFIANT=$elem_id AND RESERVE_PAR IS NOT NULL";
     $result = mysqli_query($connexion, $req);
 
 
     $data = mysqli_fetch_row($result);
     if ($data) {
-        return array($data[0], $data[1]);
+        return array($data[0], $data[1],$data[2]);
     }
     mysqli_close($connexion);
     return null;
@@ -71,8 +71,6 @@ function get_reservation_elem($elem_id)
 
 function faire_reservation($prof_id, $elem_id): bool
 {
-//todo faire reservation et verifier si
-    var_dump(get_reservation_elem($elem_id));
     if (get_reservation_prof($prof_id) == null && get_element($elem_id) !== null && get_prof($prof_id) != null && get_reservation_elem($elem_id) == null) {
         echo "ouiiiiii";
         $connexion = connectionDB();
@@ -92,17 +90,26 @@ function faire_reservation($prof_id, $elem_id): bool
 
 function annuler_reservation($prof_id, $elem_id)
 {
-//todo enlever reservation et verifier si
-    // le prof a bien réservé ce truc
-    //renvoi un boolen vrai si reussi sinon faux
+
+    if (get_reservation_prof($prof_id) != null && get_element($elem_id) !== null && get_prof($prof_id) != null) {
+        $res = get_reservation_elem($elem_id);
+        if($res[2] != $prof_id) return null;
+        $connexion = connectionDB();
+        $req = "UPDATE elements SET RESERVE_PAR=null where IDENTIFIANT = ?";
+        $stmt = $connexion->prepare($req);
+        $stmt->bind_param("i", $elem_id);
+        $stmt->execute();
+        mysqli_close($connexion);
+    }
+    return true;
 }
 
-function liste_reservations($uniquement_reserve = true): array
+function liste_reservations($uniquement_non_reserve = true): array
 {
     $connexion = connectionDB();
-    $req = "SELECT e.LIBELLE, e.DENOMINATION, e.RESERVE_PAR FROM elements e";
-    if ($uniquement_reserve) {
-        $req = "$req WHERE e.RESERVE_PAR IS NOT NULL";
+    $req = "SELECT e.LIBELLE, e.DENOMINATION, e.RESERVE_PAR,IDENTIFIANT FROM elements e";
+    if ($uniquement_non_reserve) {
+        $req = "$req WHERE e.RESERVE_PAR IS NULL";
     }
     $result = mysqli_query($connexion, $req);
 
@@ -111,6 +118,7 @@ function liste_reservations($uniquement_reserve = true): array
         $outils = $data[0];
         $denomination = $data[1];
         $prof = $data[2];
+        $identifient = $data[3];
         if ($prof) {
             $req2 = "SELECT USERNAME from professeurs where id=$prof";
             $result2 = mysqli_query($connexion, $req2);
@@ -119,7 +127,7 @@ function liste_reservations($uniquement_reserve = true): array
             }
         }
 
-        $array[] = array($outils, $denomination, $prof);
+        $array[] = array($outils, $denomination, $prof,$identifient);
     }
     mysqli_close($connexion);
     return $array;

@@ -1,11 +1,13 @@
 <?php
 //todo verif connection
 //todo GET("err") pour erreure de réservation/déreservation
-$reservationUser = ["Outils 4", "4"];
+include_once("gestionoutils.php");
+session_start();
+$reservationUser = get_reservation_prof($_SESSION["id"]);
 
 function GetData() : array
 {
-    return array(["Outils 1", "1"], ["Outils 2", "2"], ["Outils 3", "3"]);
+    return liste_reservations();
 }
 
 function DisplayReservationList($data , $reservationUser)
@@ -26,7 +28,7 @@ function DisplayReservationList($data , $reservationUser)
     for($i = 0; $i < $itemCount; $i++)
     {
         $outils = $data[$i][0];
-        $id = $data[$i][1];
+        $id = $data[$i][3];
 
         echo "
         <tr>
@@ -44,7 +46,6 @@ function DisplayReservationList($data , $reservationUser)
         </tr>
         ";
     }
-
     if($reservationUser)
     {
         echo "

@@ -22,8 +22,8 @@ function DisplayReservationTable($data)
                 <th colspan='3'>Réservations</th>
             </tr>
             <tr>
-                <th colspan='1'>Outil</th>
                 <th colspan='1'>Dénomination</th>
+                <th colspan='1'>Outil</th>
                 <th colspan='1'>Réservé Par</th>
             </tr>
         </thead>
@@ -115,5 +115,6 @@ DisplayProfessorList($professorList);
         </div>
     </form>
 </div>
+<button onclick="location.href='pdf.php'">Générer un PDF</button>
 </body>
 </html>
