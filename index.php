@@ -1,12 +1,14 @@
 <html lang="fr">
 <head>
     <title>Connexion</title>
-    <link rel="stylesheet" href=""/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel='stylesheet' href='css/adminTemplates.css'>
+
 </head>
 
 <body>
 <?php
-session_start(); //todo mettre des if session_status autour de ca
+include_once("header.php");
 if (isset($_SESSION['username'])) {
     if ($_SESSION['admin']) {
         header("Location: admin.php");
@@ -15,22 +17,29 @@ if (isset($_SESSION['username'])) {
     }
     exit();
 }
-include_once("header.php");
+
 ?>
-<div class='form'>
-    <div id='connexion'>
-        <h2>Connexion :</h2>
+<div class="conteneur">
+    <div class='form'>
         <form class='connexion' method='post' action=''>
-            <label for='username'>Username : </label> <br/>
-            <input type='text' id='username' name='username' autocomplete="off" required/>
-            <br></br>
+            <h2>Connexion :</h2>
+            <div class="form-group">
+                <label for='username'>Nom d'utilisateur : </label> <br/>
+                <input type='text' id='username' name='username' autocomplete="off" required/>
+                <br></br>
+            </div>
 
-            <label for='password'>Password : </label><br/>
-            <input type='password' id='password' name='password' autocomplete="off" required/>
-            <br></br>
+            <div class="form-group">
+                <label for='password'>Mot de passe : </label><br/>
+                <input type='password' id='password' name='password' autocomplete="off" required/>
+                <br></br>
+            </div>
 
-            <input type='submit' name='ok' value='Connexion'/>
-            <br/><br/>
+            <div class="form-group">
+                <input type='submit' name='ok' value='Connexion'/>
+                <br/><br/>
+            </div>
+
             <a href="inscription.php">Vous n'avez pas de compte ? Créez un compte </a>
             <?php
             //todo verfier id inutilisé

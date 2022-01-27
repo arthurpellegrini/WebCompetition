@@ -30,7 +30,34 @@
     border-bottom: 2px solid #009879;
 }
 
-header{
-    background-color: #43b5ff;
-
+h1{
+    font-size: xxx-large !important;
 }
+
+.form{
+    margin: 2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+}
+
+.conteneur{
+    width: 30em;
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 10em auto;
+}
+
+
+.conteneur-table{
+    width: 30em;
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 10em auto;
+}
+

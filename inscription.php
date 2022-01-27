@@ -1,7 +1,8 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="" />
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel='stylesheet' href='css/adminTemplates.css'>
         <title>Inscription</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
@@ -11,20 +12,20 @@
     <?php
     include_once("header.php");
     ?>
-    <div class='form'>
-        <div id='connexion'>
-            <h2>Création de compte :</h2>
+    <div class='conteneur'>
+        <div class='form'>
             <form class='connexion' method='post' action=''>
+                <h2>Création de compte :</h2>
                 <p>
-                    <label for="username">Username : </label><br/>
+                    <label for="username">Nom d'utilisateur : </label><br/>
                     <input type='text' id="username" name='username' autocomplete="off"   minlength="3" maxlength="50" required pattern= "^[A-Za-z0-9 '-_]+$">
                     <br></br>
 
-                    <label for="password">Password : </label><br/>
+                    <label for="password">Mot de passe : </label><br/>
                     <input type='password' id="password" name='password' minlength="3">
                     <br></br>
 
-                    <label for="confirmation">Confirmation password: </label><br/>
+                    <label for="confirmation">Confirmation du mot de passe: </label><br/>
                     <input type='password' id="confirmation" name='confirmation'  minlength="3">
                     <br></br>
 
