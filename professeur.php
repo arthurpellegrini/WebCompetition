@@ -1,4 +1,5 @@
 <?php
+//todo verif connection
 function GetData() : array
 {
     return array(["Outils 1", "1"], ["Outils 2", "2"], ["Outils 3", "3"]);
