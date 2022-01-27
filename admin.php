@@ -88,9 +88,11 @@ function DisplayProfessorList($professorList)
     <link rel="icon" type="image/png" href="img/logo.png"/>
 </head>
 <body>
+<?php
+include_once("header.php");
+?>
 <div id = "tabcontainer">
     <?php
-    include_once("header.php");
     DisplayReservationTable(GetData());
     DisplayProfessorList($professorList);
     if(isset($_POST["denomination"])){

@@ -34,6 +34,7 @@ h1{
     font-size: xxx-large !important;
 }
 
+
 .form{
     margin: 2em;
     display: flex;
@@ -71,4 +72,10 @@ h1{
     display: flex;
     justify-content: center;
 
+}
+
+.nav-item, .deco{
+    padding-left:30em;
+    justify-self: flex-end;
+    font-size: large;
 }
