@@ -7,6 +7,9 @@
 
 
     <body>
+    <?php
+    include("header.php");
+    ?>
     <div class='form'>
         <div id='connexion'>
             <h2>Création de compte :</h2>

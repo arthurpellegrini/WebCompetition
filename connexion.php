@@ -5,6 +5,9 @@
 </head>
 
 <body>
+<?php
+include("header.php");
+?>
 <div class='form'>
     <div id='connexion'>
         <h2>Connexion :</h2>
@@ -45,7 +48,6 @@
 </body>
 
 <?php
-session_start();
 include("userManagementDB.php");
 if (isset($_POST['username'], $_POST['password'])) {
     $username = $_POST['username'];

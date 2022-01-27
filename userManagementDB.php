@@ -68,3 +68,16 @@ function inscriptionUtilisateur($username, $password)
     } else
         return "usernameExist";
 }
+
+function listeUtilisateurs(){
+    $connexion = connectionDB();
+    $req = "SELECT USERNAME FROM professeurs";
+    $req = mysqli_query($connexion, $req);
+    $usernameList = array();
+    while($result = mysqli_fetch_row($req)){
+        array_push($usernameList, $result[0]);
+    }
+    mysqli_close($connexion);//fermeture de la connexion à la BD
+
+    return $usernameList;
+}
