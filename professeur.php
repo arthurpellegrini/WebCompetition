@@ -15,7 +15,7 @@ function DisplayReservationList($data , $reservationUser)
     $itemCount = count($data);
 
     echo "
-<div class='conteneur'>
+<div class='conteneur-table'>
 <div class='table'>
     <table class='styled-table'>
         <thead>

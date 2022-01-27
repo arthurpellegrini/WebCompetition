@@ -88,11 +88,12 @@ function DisplayProfessorList($professorList)
     <link rel="icon" type="image/png" href="img/logo.png"/>
 </head>
 <body>
-<?php
-include_once("header.php");
-DisplayReservationTable(GetData());
-DisplayProfessorList($professorList);
-if(isset($_POST["denomination"])){
+<div id = "tabcontainer">
+    <?php
+    include_once("header.php");
+    DisplayReservationTable(GetData());
+    DisplayProfessorList($professorList);
+    if(isset($_POST["denomination"])){
     $libelle = $_POST["libelle"];
     $denom = $_POST["denomination"];
     ajoutelement($libelle, $denom);
@@ -101,27 +102,31 @@ if(isset($_POST["denomination"])){
 }
 ?>
 
-<div class='form'>
-    <form method='post' action=''>
-        <h2>Ajouter un outil :</h2>
-        <div class="form-group">
-            <label for='libelle'>Libellé de l'outil : </label> <br/>
-            <input type='text' id='libelle' name='libelle' autocomplete="off" required/>
-            <br></br>
-        </div>
+    <div class='form'>
+        <form method='post' action=''>
+            <h2>Ajouter un outil :</h2>
+            <div class="form-group">
+                <label for='libelle'>Libellé de l'outil : </label> <br/>
+                <input type='text' id='libelle' name='libelle' autocomplete="off" required/>
+                <br></br>
+            </div>
 
-        <div class="form-group">
-            <label for='denomination'>Dénomination de l'outil : </label><br/>
-            <input type='text' id='denomination' name='denomination' autocomplete="off" required/>
-            <br></br>
-        </div>
+            <div class="form-group">
+                <label for='denomination'>Dénomination de l'outil : </label><br/>
+                <input type='text' id='denomination' name='denomination' autocomplete="off" required/>
+                <br></br>
+            </div>
 
-        <div class="form-group">
-            <input type='submit' name='ok' value='Ajouter'/>
-            <br/><br/>
-        </div>
-    </form>
+            <div class="form-group">
+                <input type='submit' name='ok' value='Ajouter'/>
+                <br/><br/>
+            </div>
+        </form>
+    </div>
 </div>
-<button onclick="location.href='pdf.php'">Générer un PDF</button>
+
+<div id="pdf">
+    <button onclick="location.href='pdf.php'">Générer un PDF</button>
+</div>
 </body>
 </html>
