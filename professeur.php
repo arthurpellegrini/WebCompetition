@@ -1,10 +1,12 @@
 <?php
+$reservationUser = ["Outils 4", "4"];
+
 function GetData() : array
 {
     return array(["Outils 1", "1"], ["Outils 2", "2"], ["Outils 3", "3"]);
 }
 
-function DisplayReservationList($data)
+function DisplayReservationList($data , $reservationUser)
 {
     $itemCount = count($data);
 
@@ -25,9 +27,29 @@ function DisplayReservationList($data)
 
         echo "
         <tr>
-            <td>$outils</td>
+            <td>$outils</td>";
+
+        if(!$reservationUser)
+        {
+            echo "
             <td>
                 <button onclick='reserver(\"$outils\", \"$id\")'>Réserver</button>
+            </td>";
+        }
+
+        echo "
+        </tr>
+        ";
+    }
+
+    if($reservationUser)
+    {
+        echo "
+        <tr>
+            <td>$reservationUser[0]</td>
+            
+            <td>
+                <button onclick='rendre(\"$reservationUser[0]\", \"$reservationUser[1]\")'>Rendre</button>
             </td>
         </tr>
         ";
@@ -52,9 +74,15 @@ function DisplayReservationList($data)
                 if(confirm("Êtes-vous sûr de vouloir réserver " + outils + " ?"))
                     location.href ="actionProf.php?reservation=" + id;
             }
+
+            function rendre(outils, id)
+            {
+                if(confirm("Êtes-vous sûr de vouloir rendre " + outils + " ?"))
+                    location.href ="actionProf.php?annulation=" + id;
+            }
         </script>
     </head>
     <body>
-    <?php DisplayReservationList(GetData());?>
+    <?php DisplayReservationList(GetData(), $reservationUser);?>
     </body>
 </html>
