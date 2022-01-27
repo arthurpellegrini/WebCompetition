@@ -5,9 +5,7 @@ include("gestionoutils.php");
  */
 function GetData(): array
 {
-    $liste_reservations = liste_reservations();
-    return $liste_reservations;
-    //return $data = array(array("Outils 1", "Outils 2", "Outils 3"), array("Prof 1", "Prof 2", "Prof 3"));
+    return liste_reservations(false);
 }
 
 function DisplayReservationTable($data)
@@ -17,10 +15,10 @@ function DisplayReservationTable($data)
     <table class='styled-table'>
         <thead>
             <tr>
-                <th colspan='2'>Réservations</th>
+                <th colspan='3'>Réservations</th>
             </tr>
             <tr>
-                <th colspan='1'>Libéllé</th>
+                <th colspan='1'>Outils</th>
                 <th colspan='1'>Dénomination</th>
                 <th colspan='1'>Professeurs</th>
             </tr>
@@ -29,9 +27,11 @@ function DisplayReservationTable($data)
 
     for ($i = 0; $i < count($data); $i++) {
         $outils = $data[$i][0];
-        $prof = $data[$i][1];
+        $denomination = $data[$i][1];
+        $prof = $data[$i][2];
         echo "
         <tr>
+            <td>$denomination</td>
             <td>$outils</td>
             <td>$prof</td>
         </tr>
