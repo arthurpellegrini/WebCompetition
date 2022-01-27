@@ -3,6 +3,7 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="" />
         <title>Inscription</title>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
 
 
@@ -51,10 +52,13 @@
                         case "4"://cas où le nom d'utilisateur est déjà pris
                             echo "<p style = 'color: red ; '> Votre nom d'utilisateur est déja utilisé par un autre utilisateur</p>";
                             break;
+                        case "5"://cas où le captcha n'est pas validé
+                            echo "<p style = 'color: red ; '> Vous n&quot;avez pas validé le Captcha</p>";
+                            break;
                     }//fin du switch
                 }//fin du if
                 ?>
-
+                <div class="g-recaptcha" data-sitekey="6LeAHD8eAAAAAFdmYmbJp0Tqf-l-8YBcYCJLJteH"></div>
             </form>
         </div>
     </div>
@@ -65,6 +69,32 @@
 
 <?php
 include_once("userManagementDB.php");
+
+function isValidCaptcha()
+{
+    try {
+
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = ['secret'   => '6LeAHD8eAAAAAJnOkXrgJXw0HooeI0EiubpYIiqN',
+            'response' => $_POST['g-recaptcha-response'],
+            'remoteip' => $_SERVER['REMOTE_ADDR']];
+
+        $options = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data)
+            ]
+        ];
+
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        return json_decode($result)->success;
+    }
+    catch (Exception $e) {
+        return null;
+    }
+}
 function valid_donnees($donnees){//s'assure que les données sont valides
     $donnees = trim($donnees);//supprime les espaces en début et fin de chaîne
     $donnees = stripslashes($donnees);//supprime les antislashs
@@ -73,13 +103,14 @@ function valid_donnees($donnees){//s'assure que les données sont valides
 }
 
 
-
 if (isset($_POST['username'],$_POST['password'],$_POST['confirmation'])){
     //on récupère les informations du formulaire
     $username = valid_donnees($_POST["username"]);
     $password = valid_donnees($_POST["password"]);
     $C_password = valid_donnees($_POST["confirmation"]);
 
+    if(!isValidCaptcha())
+        header('Location: inscription.php?id=5');
     // On s'assure que le mot de passe entré dans le champ mot de passe et confirmation sont indentiques
     if ($password==$C_password){
         $result = inscriptionUtilisateur($username, $password);

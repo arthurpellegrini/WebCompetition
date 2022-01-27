@@ -70,6 +70,7 @@ function DisplayReservationList($data , $reservationUser)
         <meta charset='UTF-8'>
         <title>Mes outils</title>
         <link rel='stylesheet' href='css/adminTemplates.css'>
+
         <script>
             function reserver(outils, id)
             {
