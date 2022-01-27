@@ -16,6 +16,13 @@ function faire_reservation($prof_id,$elem_id){
 //todo faire reservation et verifier si
     // le prof a déja reservé un truc -> pas possible
     // l'objet demandé est déja reservé -> pas possible
+    //renvoi un boolen vrai si reussi sinon faux
+}
+
+function annuler_reservation($prof_id,$elem_id){
+//todo enlever reservation et verifier si
+    // le prof a bien réservé ce truc
+    //renvoi un boolen vrai si reussi sinon faux
 }
 
 function liste_reservations(): array
