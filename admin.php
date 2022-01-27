@@ -17,10 +17,11 @@ function DisplayReservationTable($data)
     <table class='styled-table'>
         <thead>
             <tr>
-                <th colspan='2'>Réservation</th>
+                <th colspan='2'>Réservations</th>
             </tr>
             <tr>
-                <th colspan='1'>Outils</th>
+                <th colspan='1'>Libéllé</th>
+                <th colspan='1'>Dénomination</th>
                 <th colspan='1'>Professeurs</th>
             </tr>
         </thead>
