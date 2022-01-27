@@ -1,11 +1,21 @@
 <?php
-
+//todo empecher acces
 function ajoutelement() {
 
 }
 
 function genererpdf() {
 
+}
+
+function get_reservation_prof($prof_id){
+    //todo renvoi la réservation du prof ou "null"
+}
+
+function faire_reservation($prof_id,$elem_id){
+//todo faire reservation et verifier si
+    // le prof a déja reservé un truc -> pas possible
+    // l'objet demandé est déja reservé -> pas possible
 }
 
 function liste_reservations(): array
