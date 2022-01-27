@@ -1,14 +1,14 @@
 <?php
 //todo empecher acces
 include_once("connexionBD.php");
-function ajoutelement()
+function ajoutelement($elem, $denomination)
 {
-
-}
-
-function genererpdf()
-{
-
+    $connexion = connectionDB();
+    $sql = "INSERT INTO elements (LIBELLE, DENOMINATION) VALUES(?,?)";
+    $stmt = $connexion->prepare($sql);
+    $stmt->bind_param("ss", $elem, $denomination);
+    $stmt->execute();
+    mysqli_close($connexion);
 }
 
 function get_prof($prof_id)
