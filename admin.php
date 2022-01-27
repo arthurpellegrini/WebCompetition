@@ -93,20 +93,27 @@ function DisplayProfessorList($professorList)
     include_once("header.php");
     DisplayReservationTable(GetData());
     DisplayProfessorList($professorList);
-    ?>
+    if(isset($_POST["denomination"])){
+    $libelle = $_POST["libelle"];
+    $denom = $_POST["denomination"];
+    ajoutelement($libelle, $denom);
+    header("Location: index.php");
+    exit();
+}
+?>
 
     <div class='form'>
         <form method='post' action=''>
             <h2>Ajouter un outil :</h2>
             <div class="form-group">
-                <label for='username'>Libellé de l'outil : </label> <br/>
+                <label for='libelle'>Libellé de l'outil : </label> <br/>
                 <input type='text' id='libelle' name='libelle' autocomplete="off" required/>
                 <br></br>
             </div>
 
             <div class="form-group">
-                <label for='password'>Dénomination de l'outil : </label><br/>
-                <input type='password' id='denomination' name='denomination' autocomplete="off" required/>
+                <label for='denomination'>Dénomination de l'outil : </label><br/>
+                <input type='text' id='denomination' name='denomination' autocomplete="off" required/>
                 <br></br>
             </div>
 
@@ -118,7 +125,8 @@ function DisplayProfessorList($professorList)
     </div>
 </div>
 
-
-<a href="pdf.php" target="_blank">Générer un PDF</a>
+<div id="pdf">
+    <a href="pdf.php" target="_blank">Générer un PDF</a>
+</div>
 </body>
 </html>

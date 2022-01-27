@@ -71,8 +71,8 @@ function get_reservation_elem($elem_id)
 
 function faire_reservation($prof_id, $elem_id): bool
 {
+//todo faire reservation et verifier si
     if (get_reservation_prof($prof_id) == null && get_element($elem_id) !== null && get_prof($prof_id) != null && get_reservation_elem($elem_id) == null) {
-        echo "ouiiiiii";
         $connexion = connectionDB();
         $sql = "UPDATE elements SET RESERVE_PAR=? WHERE IDENTIFIANT=?";
 
