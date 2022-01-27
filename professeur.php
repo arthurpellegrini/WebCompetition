@@ -73,6 +73,7 @@ function DisplayReservationList($data , $reservationUser)
         <title>Mes outils</title>
         <link rel='stylesheet' href='css/bootstrap.css'>
         <link rel='stylesheet' href='css/adminTemplates.css'>
+        <link rel="icon" type="image/png" href="img/logo.png"/>
 
         <script>
             function reserver(outils, id)
