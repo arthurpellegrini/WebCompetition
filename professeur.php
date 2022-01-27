@@ -13,6 +13,7 @@ function DisplayReservationList($data , $reservationUser)
     $itemCount = count($data);
 
     echo "
+<div class='conteneur'>
 <div class='table'>
     <table class='styled-table'>
         <thead>
@@ -60,6 +61,7 @@ function DisplayReservationList($data , $reservationUser)
         </tbody>
     </table>
 </div>
+</div>
     ";
 }
 ?>
@@ -69,6 +71,7 @@ function DisplayReservationList($data , $reservationUser)
     <head>
         <meta charset='UTF-8'>
         <title>Mes outils</title>
+        <link rel='stylesheet' href='css/bootstrap.css'>
         <link rel='stylesheet' href='css/adminTemplates.css'>
 
         <script>
@@ -86,6 +89,8 @@ function DisplayReservationList($data , $reservationUser)
         </script>
     </head>
     <body>
-    <?php DisplayReservationList(GetData(), $reservationUser);?>
+    <?php
+    include("header.php");
+    DisplayReservationList(GetData(), $reservationUser);?>
     </body>
 </html>

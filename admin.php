@@ -1,3 +1,4 @@
+
 <?php
 //todo verif connection
 include_once("gestionoutils.php");
@@ -83,11 +84,37 @@ function DisplayProfessorList($professorList)
 <head>
     <meta charset='UTF-8'>
     <title>Mes outils</title>
+    <link rel='stylesheet' href='css/bootstrap.css'>
     <link rel='stylesheet' href='css/adminTemplates.css'>
+
 </head>
 <body>
-<?php DisplayReservationTable(GetData());
+<?php
+include_once("header.php");
+DisplayReservationTable(GetData());
 DisplayProfessorList($professorList);
 ?>
+
+<div class='form'>
+    <form method='post' action=''>
+        <h2>Ajouter un outil :</h2>
+        <div class="form-group">
+            <label for='username'>Libellé de l'outil : </label> <br/>
+            <input type='text' id='libelle' name='libelle' autocomplete="off" required/>
+            <br></br>
+        </div>
+
+        <div class="form-group">
+            <label for='password'>Dénomination de l'outil : </label><br/>
+            <input type='password' id='denomination' name='denomination' autocomplete="off" required/>
+            <br></br>
+        </div>
+
+        <div class="form-group">
+            <input type='submit' name='ok' value='Ajouter'/>
+            <br/><br/>
+        </div>
+    </form>
+</div>
 </body>
 </html>
