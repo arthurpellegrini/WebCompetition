@@ -1,5 +1,5 @@
 <?php
-
+//todo empecher acces
 function connectionDB()
 {
     //Variables nécessaires à la connexion

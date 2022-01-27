@@ -1,4 +1,5 @@
 <?php
+//todo verif connection
 include("gestionoutils.php");
 /**
  * @return string[][]

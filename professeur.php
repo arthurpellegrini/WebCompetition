@@ -1,4 +1,5 @@
 <?php
+//todo verif connection
 $reservationUser = ["Outils 4", "4"];
 
 function GetData() : array
