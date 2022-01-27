@@ -9,17 +9,18 @@ function DisplayReservationTable($data)
     $itemCount = count($data[0]);
 
     echo "
-<table>
-    <thead>
-        <tr>
-            <th colspan='2'>Réservation</th>
-        </tr>
-        <tr>
-            <th colspan='1'>Outils</th>
-            <th colspan='1'>Professeurs</th>
-        </tr>
-    </thead>
-    <tbody>";
+<div class='table'>
+    <table class='styled-table'>
+        <thead>
+            <tr>
+                <th colspan='2'>Réservation</th>
+            </tr>
+            <tr>
+                <th colspan='1'>Outils</th>
+                <th colspan='1'>Professeurs</th>
+            </tr>
+        </thead>
+        <tbody>";
 
     for($i = 0; $i < $itemCount; $i++)
     {
@@ -33,26 +34,28 @@ function DisplayReservationTable($data)
         ";
     }
     echo "
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
     ";
 }
 
 function Main()
 {
-    echo '
+    echo "
 <!DOCTYPE html>
-<html lang="en">
+<html lang='fr'>
 <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <title>Mes outils</title>
+    <link rel='stylesheet' href='css/adminTemplates.css'>
 </head>
-<body>';
+<body>";
 
     DisplayReservationTable(GetData());
 
-    echo '</body>
-</html>';
+    echo "</body>
+</html>";
 }
 
 Main();
