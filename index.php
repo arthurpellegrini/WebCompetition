@@ -1,7 +1,9 @@
 <html lang="fr">
 <head>
     <title>Connexion</title>
-    <link rel="stylesheet" href=""/>
+    <link rel='stylesheet' href='css/bootstrap.css'>
+    <link rel='stylesheet' href='css/adminTemplates.css'>
+    <link rel="icon" type="image/png" href="img/logo.png"/>
 </head>
 
 <body>
