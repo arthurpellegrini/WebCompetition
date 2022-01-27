@@ -1,5 +1,6 @@
 <?php
 //todo verif connection
+//todo GET("err") pour erreure de réservation/déreservation
 $reservationUser = ["Outils 4", "4"];
 
 function GetData() : array
@@ -69,6 +70,7 @@ function DisplayReservationList($data , $reservationUser)
         <meta charset='UTF-8'>
         <title>Mes outils</title>
         <link rel='stylesheet' href='css/adminTemplates.css'>
+
         <script>
             function reserver(outils, id)
             {
