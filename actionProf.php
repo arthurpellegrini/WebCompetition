@@ -1,5 +1,6 @@
 <?php
 //todo verifier user
+session_start();
 include_once("gestionoutils.php");
 $err = false;
 if (isset($_GET["reservation"])) {

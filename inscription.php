@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="css/bootstrap.css" />
         <link rel='stylesheet' href='css/adminTemplates.css'>
         <title>Inscription</title>
+        <link rel="icon" type="image/png" href="img/logo.png"/>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
 

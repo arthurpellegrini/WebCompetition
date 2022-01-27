@@ -1,4 +1,3 @@
-
 <?php
 //todo verif connection
 include_once("gestionoutils.php");
@@ -23,8 +22,8 @@ function DisplayReservationTable($data)
                 <th colspan='3'>Réservations</th>
             </tr>
             <tr>
-                <th colspan='1'>Outil</th>
                 <th colspan='1'>Dénomination</th>
+                <th colspan='1'>Outil</th>
                 <th colspan='1'>Réservé Par</th>
             </tr>
         </thead>
@@ -86,7 +85,7 @@ function DisplayProfessorList($professorList)
     <title>Mes outils</title>
     <link rel='stylesheet' href='css/bootstrap.css'>
     <link rel='stylesheet' href='css/adminTemplates.css'>
-
+    <link rel="icon" type="image/png" href="img/logo.png"/>
 </head>
 <body>
 <?php
@@ -116,5 +115,6 @@ DisplayProfessorList($professorList);
         </div>
     </form>
 </div>
+<button onclick="location.href='pdf.php'">Générer un PDF</button>
 </body>
 </html>

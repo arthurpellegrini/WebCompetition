@@ -3,7 +3,8 @@ session_start();
 ?>
 <header class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
     <div class="container">
-        <h1 class="navbar-brand">MesOutils</h1>
+        <img src="img/logo.png" alt="logo de MesOutils" width="5%">
+    <h1 class="navbar-brand">MesOutils</h1>
         <ul class="navbar-nav me-auto">
             <li class="nav-item">
                 <?php
@@ -16,6 +17,5 @@ session_start();
         </ul>
 
     </div>
-
 </header>
 
