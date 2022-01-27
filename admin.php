@@ -4,6 +4,8 @@ include("gestionoutils.php");
 /**
  * @return string[][]
  */
+$professorList = ["blabla"];
+
 function GetData(): array
 {
     return liste_reservations(false);
@@ -45,6 +47,34 @@ function DisplayReservationTable($data)
     ";
 }
 
+function DisplayProfessorList($professorList)
+{
+    $itemCount = count($professorList);
+
+    echo "
+<div class='table'>
+    <table class='styled-table'>
+        <thead>
+            <tr>
+                <th colspan='1'>Utilisateurs</th>
+            </tr>
+        </thead>
+        <tbody>";
+
+    for($i = 0; $i < $itemCount; $i++)
+    {
+        echo "
+        <tr>
+            <td>$professorList[$i]</td>
+        </tr>
+        ";
+    }
+    echo "
+        </tbody>
+    </table>
+</div>
+    ";
+}
 ?>
 
 <!DOCTYPE html>
@@ -55,5 +85,7 @@ function DisplayReservationTable($data)
     <link rel='stylesheet' href='css/adminTemplates.css'>
 </head>
 <body>
-<?php DisplayReservationTable(GetData()); ?></body>
+<?php DisplayReservationTable(GetData());
+DisplayProfessorList($professorList); ?>
+</body>
 </html>
