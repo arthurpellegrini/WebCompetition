@@ -1,7 +1,22 @@
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Mes outils</title>
+    <link rel='stylesheet' href='css/adminTemplates.css'>
+</head>
+<body>
+<?php DisplayReservationTable(GetData()); ?></body>
+</html>
+
 <?php
-function GetData()
+/**
+ * @return string[][]
+ */
+function GetData(): array
 {
-    return $data = array(array("Outils 1", "Outils 2", "Outils 3"), array("Prof 1", "Prof 2", "Prof 3"));
+    //todo arthur
+    return array(array("Outils 1", "Outils 2", "Outils 3"), array("Prof 1", "Prof 2", "Prof 3"));
 }
 
 function DisplayReservationTable($data)
@@ -22,8 +37,7 @@ function DisplayReservationTable($data)
         </thead>
         <tbody>";
 
-    for($i = 0; $i < $itemCount; $i++)
-    {
+    for ($i = 0; $i < $itemCount; $i++) {
         $outils = $data[0][$i];
         $prof = $data[1][$i];
         echo "
@@ -40,23 +54,4 @@ function DisplayReservationTable($data)
     ";
 }
 
-function Main()
-{
-    echo "
-<!DOCTYPE html>
-<html lang='fr'>
-<head>
-    <meta charset='UTF-8'>
-    <title>Mes outils</title>
-    <link rel='stylesheet' href='css/adminTemplates.css'>
-</head>
-<body>";
-
-    DisplayReservationTable(GetData());
-
-    echo "</body>
-</html>";
-}
-
-Main();
 ?>
