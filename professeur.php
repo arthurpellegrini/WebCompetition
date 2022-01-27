@@ -1,5 +1,6 @@
 <?php
 //todo verif connection
+//todo GET("err") pour erreure de réservation/déreservation
 $reservationUser = ["Outils 4", "4"];
 
 function GetData() : array

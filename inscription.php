@@ -8,7 +8,7 @@
 
     <body>
     <?php
-    include("header.php");
+    include_once("header.php");
     ?>
     <div class='form'>
         <div id='connexion'>
@@ -30,12 +30,12 @@
                     <input type='submit' name='ok' value='Créer un compte'/>
                     <br/><br/>
 
-                    <a href="Connexion.php?header=RetournerAccueil">Vous avez déjà un compte ? Connectez vous </a><!--lien vers la page de connexion-->
+                    <a href="index.php?header=RetournerAccueil">Vous avez déjà un compte ? Connectez vous </a><!--lien vers la page de connexion-->
                 </p>
 
                 <?php
 
-
+//todo verifier id inutilisés
                 if (isset($_GET['id'])){//les différents cas après la tentative de création de compte
                     switch ($_GET['id']){
                         case "1"://cas où le compte à été créé
@@ -64,7 +64,7 @@
 
 
 <?php
-include("userManagementDB.php");
+include_once("userManagementDB.php");
 function valid_donnees($donnees){//s'assure que les données sont valides
     $donnees = trim($donnees);//supprime les espaces en début et fin de chaîne
     $donnees = stripslashes($donnees);//supprime les antislashs
@@ -83,8 +83,8 @@ if (isset($_POST['username'],$_POST['password'],$_POST['confirmation'])){
     // On s'assure que le mot de passe entré dans le champ mot de passe et confirmation sont indentiques
     if ($password==$C_password){
         $result = inscriptionUtilisateur($username, $password);
-        if ($result){
-            header('Location: connexion.php?id=1');
+        if ($result && connexionUtilisateur($username,$password)){
+            header('Location: index.php');
         }
         else
             header('Location: inscription.php?id=4');

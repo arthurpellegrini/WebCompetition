@@ -1,10 +1,11 @@
 <?php
 //todo verif connection
-include("gestionoutils.php");
+include_once("gestionoutils.php");
+include_once("userManagementDB.php");
 /**
  * @return string[][]
  */
-$professorList = ["blabla"];
+$professorList = listeUtilisateurs();
 
 function GetData(): array
 {
@@ -21,9 +22,9 @@ function DisplayReservationTable($data)
                 <th colspan='3'>Réservations</th>
             </tr>
             <tr>
-                <th colspan='1'>Outils</th>
+                <th colspan='1'>Outil</th>
                 <th colspan='1'>Dénomination</th>
-                <th colspan='1'>Professeurs</th>
+                <th colspan='1'>Réservé Par</th>
             </tr>
         </thead>
         <tbody>";
