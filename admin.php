@@ -118,7 +118,8 @@ function DisplayProfessorList($professorList)
     </div>
 </div>
 
-
-<button onclick="location.href='pdf.php'">Générer un PDF</button>
+<div id="pdf">
+    <button onclick="location.href='pdf.php'">Générer un PDF</button>
+</div>
 </body>
 </html>
